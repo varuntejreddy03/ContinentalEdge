@@ -1,73 +1,90 @@
-# React + TypeScript + Vite
+# 🏙️ Continental Edge Studio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> **Defining the Future Cityscape.**
+> A premium architectural and interior design studio based in Rajahmundry, merging structural logic with poetic design.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![Banner](https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop)
 
-## React Compiler
+## 🏛️ About the Project
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Continental Edge is a high-authority architectural showcase built with a focus on premium aesthetics, cinematic motion, and an uncompromising mobile experience. The platform serves as a digital gallery for the studio's portfolio, ranging from residential masterpieces to commercial landmarks.
 
-## Expanding the ESLint configuration
+## ✨ Key Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **🛡️ Custom Brand Identity**: A bespoke, animated SVG logo system that reflects architectural precision.
+- **📱 Responsive by Design**: Fully optimized for mobile, tablet, and desktop with a custom-built navigation drawer.
+- **🎬 Cinematic Animations**: Letter-by-letter headline reveals, parallax scroll effects, and smooth page transitions using Framer Motion.
+- **📂 Interactive Portfolio**: A masonry-style project gallery with category filtering and fluid layout shifts.
+- **📞 Secure Inquiry System**: An immersive contact experience featuring 24/7 support integration and WhatsApp direct connect.
+- **🌑 Dark Mode Premium**: A sleek, dark-first color palette (`#0F1115`) designed for high-end boutique brand positioning.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🛠️ Tech Stack
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- **Framework**: [React 18](https://reactjs.org/)
+- **Build Tool**: [Vite](https://vitejs.dev/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Navigation**: [React Router](https://reactrouter.com/)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js (v18+)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/varuntejreddy03/ContinentalEdge.git
+   ```
+
+2. Navigate to the project directory:
+   ```bash
+   cd ContinentalEdge
+   ```
+
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+---
+
+## 📂 Project Structure
+
+```text
+src/
+├── components/     # Reusable UI components (Logo, Navbar, Footer)
+├── pages/          # Full-page views (Home, Portfolio, Contact)
+├── assets/         # Project images and static files
+└── index.css       # Global styles and Tailwind directives
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## ✒️ Design Philosophy
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+"Every line drawn must serve a purpose—both functional and emotional." Continental Edge is built on the belief that digital architecture should be as refined as the physical spaces we create.
+
+---
+
+### 📩 Contact the Studio
+
+- **Location**: Danavaipeta, Rajamahendravaram, AP
+- **Email**: continentaledgestudio@gmail.com
+- **Phone**: +91 81216 66611
+- **WhatsApp**: [Chat Now](https://wa.me/918121666611)
+
+© 2024 Continental Edge Studio. All Rights Reserved.

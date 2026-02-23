@@ -42,12 +42,12 @@ Sandeep Associates is a high-authority architectural showcase built with a focus
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/varuntejreddy03/ContinentalEdge.git
+   git clone https://github.com/varuntejreddy03/SandeepAssociates.git
    ```
 
 2. Navigate to the project directory:
    ```bash
-   cd ContinentalEdge
+   cd SandeepAssociates
    ```
 
 3. Install dependencies:

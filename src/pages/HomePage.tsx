@@ -226,8 +226,8 @@ const HomePage = () => {
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-8">
             <div className="space-y-4">
-              <span className="text-primary font-bold tracking-[0.4em] uppercase text-[10px]">Expertise</span>
-              <h2 className="text-3xl md:text-4xl font-serif font-black">Crafting Excellence.</h2>
+              <span className="text-primary font-bold tracking-[0.4em] uppercase text-[10px]">What we do</span>
+              <h2 className="text-3xl md:text-4xl font-serif font-black">Crafting the Impossible.</h2>
             </div>
             <p className="text-slate-400 max-w-sm font-light leading-relaxed border-l border-primary/30 pl-8">
               A holistic approach to architecture, interior curation, and master planning, executed with surgical precision.
@@ -268,7 +268,7 @@ const HomePage = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-studio-dark via-studio-dark/60 to-transparent"></div>
                 </div>
 
-                <div className="relative z-10 pointer-events-none">
+                <div className="relative z-10">
                   <div className="mb-6 md:mb-10 text-primary group-hover:scale-110 transition-transform duration-700 transform-gpu">{service.icon}</div>
                   <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4 tracking-tight group-hover:text-primary transition-colors">{service.title}</h3>
                   <p className="text-slate-400 font-light leading-relaxed mb-6 md:mb-8 text-sm md:text-base group-hover:text-white transition-colors">{service.desc}</p>

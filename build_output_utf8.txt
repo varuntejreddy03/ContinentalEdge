@@ -1,0 +1,29 @@
+﻿
+> continental-edge@0.0.0 build
+> tsc -b && vite build
+
+src/components/Layout/Footer.tsx(2,10): error TS2305: Module '"lucide-react"' has no exported member 'Architecture'.
+src/components/Layout/Navbar.tsx(3,10): error TS2305: Module '"lucide-react"' has no exported member 'Architecture'.
+src/pages/HomePage.tsx(2,22): error TS6133: 'CheckCircle2' is declared but its value is never read.
+src/pages/HomePage.tsx(2,36): error TS6133: 'Award' is declared but its value is never read.
+src/pages/HomePage.tsx(88,14): error TS2322: Type '{ children: Element; className: string; initial: { opacity: number; y: number; }; whileInView: { opacity: number; y: number; }; viewport: { once: boolean; }; transition: { duration: number; ease: string; }; }' is not assignable to type 'Omit<HTMLMotionProps<"div">, "ref">'.
+  Types of property 'transition' are incompatible.
+    Type '{ duration: number; ease: string; }' is not assignable to type 'Transition<any> | undefined'.
+      Type '{ duration: number; ease: string; }' is not assignable to type 'TransitionWithValueOverrides<any>'.
+        Type '{ duration: number; ease: string; }' is not assignable to type 'ValueAnimationTransition<any>'.
+          Types of property 'ease' are incompatible.
+            Type 'string' is not assignable to type 'Easing | Easing[] | undefined'.
+src/pages/HomePage.tsx(170,12): error TS2322: Type '{ children: string; className: string; initial: { opacity: number; y: number; }; whileInView: { opacity: number; y: number; }; viewport: { once: boolean; }; transition: { duration: number; ease: string; }; }' is not assignable to type 'Omit<HTMLMotionProps<"h2">, "ref">'.
+  Types of property 'transition' are incompatible.
+    Type '{ duration: number; ease: string; }' is not assignable to type 'Transition<any> | undefined'.
+      Type '{ duration: number; ease: string; }' is not assignable to type 'TransitionWithValueOverrides<any>'.
+        Type '{ duration: number; ease: string; }' is not assignable to type 'ValueAnimationTransition<any>'.
+          Types of property 'ease' are incompatible.
+            Type 'string' is not assignable to type 'Easing | Easing[] | undefined'.
+src/pages/HomePage.tsx(176,12): error TS2322: Type '{ children: Element; initial: { opacity: number; y: number; }; whileInView: { opacity: number; y: number; }; viewport: { once: boolean; }; transition: { duration: number; ease: string; }; }' is not assignable to type 'Omit<HTMLMotionProps<"div">, "ref">'.
+  Types of property 'transition' are incompatible.
+    Type '{ duration: number; ease: string; }' is not assignable to type 'Transition<any> | undefined'.
+      Type '{ duration: number; ease: string; }' is not assignable to type 'TransitionWithValueOverrides<any>'.
+        Type '{ duration: number; ease: string; }' is not assignable to type 'ValueAnimationTransition<any>'.
+          Types of property 'ease' are incompatible.
+            Type 'string' is not assignable to type 'Easing | Easing[] | undefined'.

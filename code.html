@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Continental Edge | High-End Architectural Studio</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#c1a96c",
+                        "background-light": "#f7f7f6",
+                        "background-dark": "#0a0a0a",
+                        "studio-dark": "#1d1b15",
+                        "charcoal": "#121212",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "serif": ["Playfair Display", "serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .font-serif { font-family: 'Playfair Display', serif; }
+        .font-display { font-family: 'Inter', sans-serif; }
+        .letter-spacing-widest { letter-spacing: 0.2em; }
+        .masonry-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-auto-rows: 200px;
+            gap: 1.5rem;
+        }
+        .masonry-item-tall { grid-row: span 3; }
+        .masonry-item-wide { grid-column: span 2; }
+        .masonry-item-square { grid-row: span 2; }
+        
+        .portfolio-hover:hover .overlay {
+            opacity: 1;
+        }
+        .selection\:bg-primary\/30 ::selection { background-color: rgba(193, 169, 108, 0.3); }
+        .thin-border { border-width: 0.5px; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display selection:bg-primary/30 antialiased">
+    <div id="root"></div>
+
+    <!-- React Dependencies -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/history@5/umd/history.development.js"></script>
+    <script src="https://unpkg.com/react-router@6.3.0/umd/react-router.development.js"></script>
+    <script src="https://unpkg.com/react-router-dom@6.3.0/umd/react-router-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+        const { createRoot } = ReactDOM;
+        const { MemoryRouter, Routes, Route, Link, useNavigate, useLocation } = ReactRouterDOM;
+
+        // --- Shared Components ---
+
+        const Navbar = () => {
+            const navigate = useNavigate();
+            const [scrolled, setScrolled] = useState(false);
+
+            useEffect(() => {
+                const handleScroll = () => setScrolled(window.scrollY > 50);
+                window.addEventListener('scroll', handleScroll);
+                return () => window.removeEventListener('scroll', handleScroll);
+            }, []);
+
+            return (
+                <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md h-16 shadow-sm' : 'bg-transparent h-20'}`}>
+                    <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between h-full">
+                        <Link to="/" className="flex items-center gap-3">
+                            <div className="text-primary">
+                                <span className="material-symbols-outlined text-3xl">architecture</span>
+                            </div>
+                            <h2 className="text-xl font-bold tracking-tighter uppercase font-display dark:text-white">Continental Edge</h2>
+                        </Link>
+                        <div className="hidden md:flex items-center gap-10">
+                            <Link className="text-xs font-bold tracking-[0.2em] hover:text-primary transition-colors uppercase" to="/">Home</Link>
+                            <Link className="text-xs font-bold tracking-[0.2em] hover:text-primary transition-colors uppercase" to="/portfolio">Portfolio</Link>
+                            <Link className="text-xs font-bold tracking-[0.2em] hover:text-primary transition-colors uppercase" to="/contact">Contact</Link>
+                        </div>
+                        <button onClick={() => navigate('/contact')} className="bg-primary hover:bg-primary/90 text-background-dark px-6 py-2 text-xs font-bold tracking-widest uppercase transition-all hidden lg:block rounded-sm">
+                            Consultation
+                        </button>
+                        <button className="md:hidden text-slate-100">
+                            <span className="material-symbols-outlined">menu</span>
+                        </button>
+                    </div>
+                </nav>
+            );
+        };
+
+        const Footer = () => (
+            <footer className="bg-charcoal pt-20 pb-10 border-t border-white/5">
+                <div className="max-w-7xl mx-auto px-6 lg:px-12">
+                    <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                        <div className="col-span-1 md:col-span-2 space-y-6">
+                            <div className="flex items-center gap-3">
+                                <div className="text-primary">
+                                    <span className="material-symbols-outlined text-3xl">architecture</span>
+                                </div>
+                                <h2 className="text-2xl font-bold tracking-tighter uppercase font-display text-white">Continental Edge</h2>
+                            </div>
+                            <p className="text-slate-500 max-w-sm leading-relaxed font-light">
+                                Redefining the architectural landscape of Rajahmundry with a commitment to precision, innovation, and timeless design aesthetics.
+                            </p>
+                            <div className="flex gap-4">
+                                <a className="w-10 h-10 border border-white/10 flex items-center justify-center hover:bg-primary hover:text-background-dark transition-all text-slate-400" href="#"><span className="material-symbols-outlined text-lg">public</span></a>
+                                <a className="w-10 h-10 border border-white/10 flex items-center justify-center hover:bg-primary hover:text-background-dark transition-all text-slate-400" href="#"><span className="material-symbols-outlined text-lg">mail</span></a>
+                                <a className="w-10 h-10 border border-white/10 flex items-center justify-center hover:bg-primary hover:text-background-dark transition-all text-slate-400" href="#"><span className="material-symbols-outlined text-lg">call</span></a>
+                            </div>
+                        </div>
+                        <div className="space-y-6">
+                            <h5 className="text-white text-xs font-bold uppercase tracking-[0.2em]">Contact</h5>
+                            <ul className="space-y-4 text-slate-500 text-sm font-light leading-relaxed">
+                                <li>123 Prestige Plaza,<br/>Main Road, Rajahmundry,<br/>Andhra Pradesh 533101</li>
+                                <li className="hover:text-primary transition-colors cursor-pointer">+91 888 555 1234</li>
+                                <li className="hover:text-primary transition-colors cursor-pointer">studio@continentaledge.com</li>
+                            </ul>
+                        </div>
+                        <div className="space-y-6">
+                            <h5 className="text-white text-xs font-bold uppercase tracking-[0.2em]">Studio</h5>
+                            <ul className="space-y-4 text-slate-500 text-sm font-light uppercase tracking-widest">
+                                <li><Link className="hover:text-primary transition-colors" to="/">Philosophy</Link></li>
+                                <li><Link className="hover:text-primary transition-colors" to="/portfolio">Portfolio</Link></li>
+                                <li><Link className="hover:text-primary transition-colors" to="/contact">Careers</Link></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div className="pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+                        <p className="text-[10px] text-slate-600 uppercase tracking-widest">© 2024 Continental Edge Studio. All Rights Reserved.</p>
+                        <p className="text-[10px] text-slate-600 uppercase tracking-widest">Design by Precision</p>
+                    </div>
+                </div>
+            </footer>
+        );
+
+        // --- Pages ---
+
+        const HomePage = () => {
+            const navigate = useNavigate();
+            return (
+                <div className="animate-fade-in">
+                    {/* Hero */}
+                    <section className="relative h-screen w-full flex items-center justify-start overflow-hidden pt-20">
+                        <div className="absolute inset-0 z-0">
+                            <div className="absolute inset-0 bg-black/50 z-10"></div>
+                            <img alt="Cinematic Architectural Render" className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcOaxnOITtCDJEhamZplB1F6byI9cDXGZCu09Or6twCmH2dCkCdv43nfiJOxcxp7DhJzFzCEpyh3M3rOnJmjg6gIFNy0KqJ80y20U35k46qq58QG3FQ3UH5ahG0or-N7V1SPG0WIrr0I5EqXAuxD-U_AUSM_Sl8gEWzXF-fYVMrtPacJiAJj4baQkDhpAwPZnPjqHEWqqbKzeYh-0RabT-9uFRQZoz-fgAIkszSb9W14QuEY0Se_Jwx4_4m1GNGkiNb3vKPXSdjc4"/>
+                        </div>
+                        <div className="relative z-20 max-w-7xl mx-auto px-6 lg:px-12 w-full">
+                            <div className="max-w-3xl space-y-6">
+                                <p className="text-primary font-bold tracking-[0.4em] uppercase text-xs">Based in Rajahmundry</p>
+                                <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-black leading-tight tracking-tight text-white">
+                                    Designing Spaces <br/> With Precision
+                                </h1>
+                                <p className="text-lg md:text-xl text-slate-300 font-light tracking-wide max-w-xl">
+                                    Architecture | Interiors | Execution
+                                </p>
+                                <div className="flex flex-wrap gap-4 pt-8">
+                                    <button onClick={() => navigate('/portfolio')} className="bg-primary hover:bg-white hover:text-background-dark text-background-dark px-10 py-4 text-sm font-bold tracking-widest uppercase transition-all flex items-center gap-2 group">
+                                        View Projects
+                                        <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                                    </button>
+                                    <button onClick={() => navigate('/contact')} className="border border-white/30 hover:border-primary hover:text-primary text-white px-10 py-4 text-sm font-bold tracking-widest uppercase transition-all">
+                                        Schedule Consultation
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 hidden md:block">
+                            <div className="flex flex-col items-center gap-2 opacity-50">
+                                <span className="text-[10px] uppercase tracking-[0.3em] text-white">Scroll</span>
+                                <div className="w-[1px] h-12 bg-gradient-to-b from-white to-transparent"></div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Philosophy */}
+                    <section className="py-24 lg:py-32 bg-background-light dark:bg-background-dark">
+                        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+                            <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+                                <div className="relative aspect-[4/5] overflow-hidden group">
+                                    <img alt="Architectural Visualization" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOp9sS_ZU0VQdtGwqkEdDVud2hxRyiXC2DKucVDKOIJPmO-FD2vjPELXmyFXuMB4BgGNW07P6ejBXcqGeaty5zzGr5GHi8tRFlTlsjbWw6KGJvJw0fal3wP30uGOGzhNzfuvELsNRNHBLOy7HX0PKawvL7e2SM_m_Y1hwKUFegX-G5KqNH-6mY9A1RCa-IsPaxpx4UoPQap7jqXjPdvHW6eEor_3LDuRq4DBSIsJX3b7FVBT1PZ042uebxA-9nqau6QbGcFCTAsuQ"/>
+                                    <div className="absolute inset-0 border-[1px] border-white/10 m-4 pointer-events-none"></div>
+                                </div>
+                                <div className="relative pl-0 lg:pl-12">
+                                    <div className="hidden lg:block absolute left-0 top-0 bottom-0 w-[2px] bg-primary/30"></div>
+                                    <div className="space-y-8">
+                                        <div className="space-y-4">
+                                            <span className="text-primary text-xs font-bold tracking-[0.3em] uppercase">The Philosophy</span>
+                                            <h2 className="text-4xl md:text-5xl font-serif font-bold dark:text-white leading-tight">
+                                                We Build What <br/> We Visualize
+                                            </h2>
+                                        </div>
+                                        <div className="space-y-6 text-slate-600 dark:text-slate-400 leading-relaxed font-light text-lg">
+                                            <p>At Continental Edge, our approach to architecture is rooted in the belief that design should be both a science and an art. We specialize in creating high-end residential and commercial spaces.</p>
+                                        </div>
+                                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-10 border-t border-slate-200 dark:border-white/10">
+                                            <div className="space-y-1">
+                                                <h3 className="text-3xl font-serif font-bold text-primary">50+</h3>
+                                                <p className="text-[10px] uppercase tracking-widest font-bold dark:text-slate-500">Projects Completed</p>
+                                            </div>
+                                            <div className="space-y-1">
+                                                <h3 className="text-3xl font-serif font-bold text-primary">100%</h3>
+                                                <p className="text-[10px] uppercase tracking-widest font-bold dark:text-slate-500">Measurement Accuracy</p>
+                                            </div>
+                                            <div className="space-y-1">
+                                                <h3 className="text-3xl font-serif font-bold text-primary">BIM</h3>
+                                                <p className="text-[10px] uppercase tracking-widest font-bold dark:text-slate-500">Integrated Design</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Methodology */}
+                    <section className="py-20 bg-charcoal">
+                        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+                            <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                                <div className="space-y-4">
+                                    <h2 className="text-3xl font-serif font-bold text-white">Our Disciplines</h2>
+                                    <div className="h-1 w-20 bg-primary"></div>
+                                </div>
+                                <p className="text-slate-400 max-w-sm text-sm uppercase tracking-widest leading-relaxed">
+                                    Transforming blueprints into livable masterpieces through dedicated craftsmanship.
+                                </p>
+                            </div>
+                            <div className="grid md:grid-cols-3 gap-1">
+                                {[
+                                    {icon: 'architecture', title: 'Architecture', desc: 'Comprehensive structural design from conceptual sketches to technical execution plans.'},
+                                    {icon: 'chair', title: 'Interiors', desc: 'Curating bespoke environments with luxury finishes, custom furniture, and lighting design.'},
+                                    {icon: 'construction', title: 'Execution', desc: 'On-site management and precision engineering to ensure the final build matches the vision.'}
+                                ].map((item, idx) => (
+                                    <div key={idx} className="group relative bg-background-dark p-12 transition-all hover:bg-primary/5 border border-white/5">
+                                        <span className="material-symbols-outlined text-primary text-4xl mb-6">{item.icon}</span>
+                                        <h4 className="text-white text-xl font-bold mb-4 uppercase tracking-tighter">{item.title}</h4>
+                                        <p className="text-slate-500 text-sm leading-relaxed mb-6">{item.desc}</p>
+                                        <Link className="text-primary text-[10px] font-bold uppercase tracking-[0.2em] flex items-center gap-2 group-hover:gap-4 transition-all" to="/portfolio">Explore <span className="material-symbols-outlined text-xs">arrow_right_alt</span></Link>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            );
+        };
+
+        const PortfolioPage = () => (
+            <div className="animate-fade-in pt-20">
+                <main className="max-w-7xl mx-auto px-6 lg:px-20">
+                    <section className="py-20 lg:py-32">
+                        <div className="max-w-3xl">
+                            <span className="text-primary text-sm font-bold tracking-[0.3em] uppercase mb-4 block">Architectural Excellence</span>
+                            <h2 className="text-5xl lg:text-7xl font-light leading-tight mb-8">Crafting structures that define the <span className="text-primary italic font-medium">modern horizon.</span></h2>
+                            <div className="h-1 w-24 bg-primary"></div>
+                        </div>
+                    </section>
+
+                    <section className="py-20 border-t border-slate-200 dark:border-primary/10">
+                        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                            <div>
+                                <h3 className="text-3xl font-bold tracking-tight mb-2 uppercase">Core Expertise</h3>
+                                <p className="text-slate-500 dark:text-slate-400 max-w-md">Precision-driven design services tailored for high-end residential and commercial developments.</p>
+                            </div>
+                            <div className="text-6xl font-black text-slate-100 dark:text-primary/5 select-none">SERVICES</div>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            {[
+                                {id: '01/', title: 'Architectural Planning & Blueprints', list: ['Strategic Zoning & Permits', 'Structural Drafts & Engineering', 'Site Analysis & Optimization']},
+                                {id: '02/', title: '3D Interior Visualization', list: ['Photorealistic CGI Renders', 'Advanced Lighting Simulations', 'Material & Texture Moodboards']},
+                                {id: '03/', title: 'Interior Execution & Turnkey', list: ['Full Project Management', 'Vendor Coordination & Sourcing', 'Final Fit-out & Handover']}
+                            ].map((service, idx) => (
+                                <div key={idx} className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-10 flex flex-col h-full group hover:border-primary transition-colors">
+                                    <span className="text-primary font-mono text-sm mb-6">{service.id}</span>
+                                    <h4 className="text-xl font-bold mb-6 dark:text-white">{service.title}</h4>
+                                    <ul className="space-y-3 mb-12 flex-grow">
+                                        {service.list.map((item, i) => (
+                                            <li key={i} className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+                                                <span className="size-1 bg-primary rounded-full"></span> {item}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                    <Link className="inline-flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-primary group-hover:gap-4 transition-all" to="/contact">
+                                        Explore <span className="material-symbols-outlined text-sm">arrow_right_alt</span>
+                                    </Link>
+                                </div>
+                            ))}
+                        </div>
+                    </section>
+
+                    <section className="py-20 border-t border-slate-200 dark:border-primary/10">
+                        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                            <div>
+                                <h3 className="text-3xl font-bold tracking-tight mb-2 uppercase">3D Visualization Showcase</h3>
+                                <p className="text-slate-500 dark:text-slate-400 max-w-md">Our latest photorealistic concepts for global clients.</p>
+                            </div>
+                            <div className="text-6xl font-black text-slate-100 dark:text-primary/5 select-none">WORKS</div>
+                        </div>
+                        <div className="masonry-grid">
+                            <div className="masonry-item-tall relative overflow-hidden group portfolio-hover">
+                                <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style={{backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuDEghRwhmMhcaJeJ5Xagbfl-qKKKQ4U1ej9eBy1hIGbarebB5LS5Y6VcbFwAEGLzweXxZR8JGBx5kYR024gbyFd5WGMS7_JDzlz8aErI_q-h7fIrxR4qlIcThe3gG1rbKjo31if-BZk_HpooxxDmhjsbx2cd8QgUfx1Pw-sBv0IhSiRfKYkKKqBdw_MGP7g5Li0Bzn5sozAnPF-Oeni1chxawrSEr-56AjUS8ASvc91_SfP8eGxusIVhKQrA_DR7pZg6YfWYLCEvAg')"}}></div>
+                                <div className="overlay absolute inset-0 bg-background-dark/80 opacity-0 flex flex-col justify-end p-8 transition-opacity duration-300 backdrop-blur-sm">
+                                    <p className="text-primary text-xs font-bold uppercase tracking-widest mb-2">Residential</p>
+                                    <h5 className="text-white text-2xl font-bold uppercase tracking-tighter">The Obsidian Villa</h5>
+                                </div>
+                            </div>
+                            <div className="masonry-item-wide masonry-item-square relative overflow-hidden group portfolio-hover">
+                                <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style={{backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuAdjd5wJqoUsU-urHRoUXXpX5TBSk-U0FOwER8Z6u8bvF1-p4YA9ZQ5OrA-_7RiCVo9bT39hHEv43P7-d02Wl-cqa3s1cpbrIc2GY4KgLS5CgC-sBQ5tFgjm2SBdYgKde5_0O0IE3itIJDcDtxyNe01MGLt3HnugNxhdLFyKwYZD7yhany3uGba4XzzzwbskenGwCEhbW3dfnAb74eyAp9o_173mK6uX3kG_YAsxsJYrSHy0K64RjEe3-9UsmYgQ_nSvSBlnxpYK7I')"}}></div>
+                                <div className="overlay absolute inset-0 bg-background-dark/80 opacity-0 flex flex-col justify-end p-8 transition-opacity duration-300 backdrop-blur-sm">
+                                    <p className="text-primary text-xs font-bold uppercase tracking-widest mb-2">Commercial</p>
+                                    <h5 className="text-white text-2xl font-bold uppercase tracking-tighter">Marlowe Corporate Hub</h5>
+                                </div>
+                            </div>
+                            <div className="masonry-item-square relative overflow-hidden group portfolio-hover">
+                                <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style={{backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuB2F7MnNoniA9w60oX4qh_rqWE9Z7-5b_nQHjNkRekFfO9vUdOL2kpTl23ETazYVCTt_Ea0lyO4kOlPWlFB6E8lG7mEV_6QD1TD-HXqddNe_F0Ubnm6IM7GS625AfY_3Lz3UdL0DUKs9iWxZaLAjYnyxdTm7QI1iDzpvkxpPC4hbeGyjaeORd7UvnAf7msV6nuFrl0Xmwsgbjb4fpeXj8dL9Xc8txarb9IrASkqKZIpE6RJwrFTOz2eXSoHTpd_u_M9VOEnmsUaBP0')"}}></div>
+                                <div className="overlay absolute inset-0 bg-background-dark/80 opacity-0 flex flex-col justify-end p-8 transition-opacity duration-300 backdrop-blur-sm">
+                                    <p className="text-primary text-xs font-bold uppercase tracking-widest mb-2">Residential</p>
+                                    <h5 className="text-white text-2xl font-bold uppercase tracking-tighter">Ethereal Penthouse</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+            </div>
+        );
+
+        const ContactPage = () => {
+            const [submitted, setSubmitted] = useState(false);
+            const handleSubmit = (e) => {
+                e.preventDefault();
+                setSubmitted(true);
+                setTimeout(() => setSubmitted(false), 3000);
+            };
+
+            return (
+                <div className="animate-fade-in pt-20">
+                    <section className="bg-charcoal py-24 px-6 md:px-12 lg:px-24 border-b border-primary/10">
+                        <div className="max-w-7xl mx-auto">
+                            <div className="mb-16">
+                                <h2 className="text-primary text-xs font-bold tracking-[0.3em] uppercase mb-4">Precision & Vision</h2>
+                                <h3 className="text-3xl md:text-4xl font-light text-white leading-tight">The Continental Edge</h3>
+                            </div>
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border-y border-white/10">
+                                <div className="py-12 md:pr-12 md:border-r border-white/10 flex flex-col gap-6 group">
+                                    <div className="text-primary group-hover:scale-110 transition-transform duration-300"><span className="material-symbols-outlined text-4xl">tactic</span></div>
+                                    <div>
+                                        <h4 className="text-white text-lg font-semibold mb-3 tracking-wide">Accuracy</h4>
+                                        <p className="text-slate-400 text-sm leading-relaxed font-light">Millimeter-perfect precision in every architectural draft and structural plan.</p>
+                                    </div>
+                                </div>
+                                <div className="py-12 md:px-12 md:border-r border-white/10 flex flex-col gap-6 group">
+                                    <div className="text-primary group-hover:scale-110 transition-transform duration-300"><span className="material-symbols-outlined text-4xl">visibility</span></div>
+                                    <div>
+                                        <h4 className="text-white text-lg font-semibold mb-3 tracking-wide">Transparency</h4>
+                                        <p className="text-slate-400 text-sm leading-relaxed font-light">Real-time project updates and clear, honest cost breakdowns at every stage.</p>
+                                    </div>
+                                </div>
+                                <div className="py-12 md:pl-12 flex flex-col gap-6 group">
+                                    <div className="text-primary group-hover:scale-110 transition-transform duration-300"><span className="material-symbols-outlined text-4xl">memory</span></div>
+                                    <div>
+                                        <h4 className="text-white text-lg font-semibold mb-3 tracking-wide">Innovation</h4>
+                                        <p className="text-slate-400 text-sm leading-relaxed font-light">Leveraging advanced Building Information Modeling for smarter construction.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section className="bg-background-light dark:bg-background-dark py-24 px-6 md:px-12 lg:px-24">
+                        <div className="max-w-7xl mx-auto">
+                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+                                <div className="flex flex-col gap-12">
+                                    <div>
+                                        <h2 className="text-primary text-xs font-bold tracking-[0.3em] uppercase mb-4">Connect</h2>
+                                        <h3 className="text-3xl md:text-4xl font-light text-slate-900 dark:text-slate-100 mb-8">Start your journey</h3>
+                                        <div className="space-y-8">
+                                            <div className="flex items-start gap-4">
+                                                <span className="material-symbols-outlined text-primary mt-1">call</span>
+                                                <div>
+                                                    <p className="text-xs uppercase tracking-widest text-slate-500 mb-1">Phone</p>
+                                                    <p className="text-lg font-medium text-slate-800 dark:text-slate-200">+91 98765 43210</p>
+                                                </div>
+                                            </div>
+                                            <div className="flex items-start gap-4">
+                                                <span className="material-symbols-outlined text-primary mt-1">mail</span>
+                                                <div>
+                                                    <p className="text-xs uppercase tracking-widest text-slate-500 mb-1">Email</p>
+                                                    <p className="text-lg font-medium text-slate-800 dark:text-slate-200">studio@continentaledge.com</p>
+                                                </div>
+                                            </div>
+                                            <div className="flex items-start gap-4">
+                                                <span className="material-symbols-outlined text-primary mt-1">location_on</span>
+                                                <div>
+                                                    <p className="text-xs uppercase tracking-widest text-slate-500 mb-1">Address</p>
+                                                    <p className="text-lg font-medium text-slate-800 dark:text-slate-200 leading-snug">Plot 42, Architectural District,<br/>Rajahmundry, Andhra Pradesh, India</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="relative w-full aspect-video bg-slate-200 dark:bg-slate-800 rounded overflow-hidden grayscale contrast-125 border border-slate-300 dark:border-slate-700">
+                                        <div className="absolute inset-0 bg-cover bg-center" style={{backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuDaoZd6AjjrSbK6iwZ1_8nhtq80I0XqE3T2fLokBjg0u_E0JarFl9n2wqFj_czG8onTAczkAStSKPaSvlHSne8TT-3bC6VUjhqqLtaIINHO-DFFjUK79Gyq3qXlHPYicW4Zj3jmtpLujbPDBdYz1SYDnQjFq7GcOY-NnbCLInI3MrITDJ44pAbV5KjY12EWb5II-HiRf2f7tGIrjr8ZNgktcaub-S87fAxgFWbQPREJ-E2VqWH82KHS37fewrX5mxNYDpuU7foXVwg')"}}></div>
+                                        <div className="absolute bottom-4 left-4 bg-white dark:bg-charcoal px-4 py-2 text-[10px] uppercase tracking-widest border border-primary/20 shadow-xl">Continental Edge HQ</div>
+                                    </div>
+                                </div>
+
+                                <div className="bg-white dark:bg-charcoal/30 p-8 md:p-12 border border-slate-200 dark:border-white/5 shadow-2xl relative">
+                                    {submitted ? (
+                                        <div className="absolute inset-0 flex flex-col items-center justify-center bg-white dark:bg-charcoal/95 z-10 p-8 text-center animate-fade-in">
+                                            <span className="material-symbols-outlined text-primary text-6xl mb-4">check_circle</span>
+                                            <h4 className="text-2xl font-bold mb-2">Message Sent</h4>
+                                            <p className="text-slate-500">Thank you for reaching out. Our team will contact you shortly.</p>
+                                        </div>
+                                    ) : (
+                                        <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
+                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                                <div className="flex flex-col gap-2">
+                                                    <label className="text-[10px] uppercase tracking-[0.2em] text-slate-500 font-bold">Full Name</label>
+                                                    <input required className="w-full bg-transparent border-0 border-b border-slate-300 dark:border-white/10 focus:ring-0 focus:border-primary px-0 py-2 text-sm placeholder:text-slate-400 dark:text-white transition-colors" placeholder="John Doe" type="text"/>
+                                                </div>
+                                                <div className="flex flex-col gap-2">
+                                                    <label className="text-[10px] uppercase tracking-[0.2em] text-slate-500 font-bold">Phone Number</label>
+                                                    <input required className="w-full bg-transparent border-0 border-b border-slate-300 dark:border-white/10 focus:ring-0 focus:border-primary px-0 py-2 text-sm placeholder:text-slate-400 dark:text-white transition-colors" placeholder="+91 00000 00000" type="tel"/>
+                                                </div>
+                                            </div>
+                                            <div className="flex flex-col gap-2">
+                                                <label className="text-[10px] uppercase tracking-[0.2em] text-slate-500 font-bold">Project Type</label>
+                                                <select required className="w-full bg-transparent border-0 border-b border-slate-300 dark:border-white/10 focus:ring-0 focus:border-primary px-0 py-2 text-sm text-slate-400 dark:text-white transition-colors cursor-pointer appearance-none">
+                                                    <option disabled selected value="">Select an option</option>
+                                                    <option value="residential">Residential Design</option>
+                                                    <option value="commercial">Commercial Space</option>
+                                                    <option value="interior">Luxury Interior</option>
+                                                </select>
+                                            </div>
+                                            <div className="flex flex-col gap-2">
+                                                <label className="text-[10px] uppercase tracking-[0.2em] text-slate-500 font-bold">Your Message</label>
+                                                <textarea required className="w-full bg-transparent border-0 border-b border-slate-300 dark:border-white/10 focus:ring-0 focus:border-primary px-0 py-2 text-sm placeholder:text-slate-400 dark:text-white transition-colors resize-none" placeholder="Tell us about your architectural vision..." rows="4"></textarea>
+                                            </div>
+                                            <button className="mt-4 bg-primary hover:bg-primary/90 text-background-dark font-bold py-4 px-8 uppercase tracking-[0.25em] text-xs transition-all duration-300 flex items-center justify-center gap-2 group" type="submit">
+                                                Submit Inquiry
+                                                <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                                            </button>
+                                        </form>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            );
+        };
+
+        const ScrollToTop = () => {
+            const { pathname } = useLocation();
+            useEffect(() => {
+                window.scrollTo(0, 0);
+            }, [pathname]);
+            return null;
+        };
+
+        const App = () => {
+            return (
+                <MemoryRouter>
+                    <ScrollToTop />
+                    <div className="min-h-screen flex flex-col">
+                        <Navbar />
+                        <div className="flex-grow">
+                            <Routes>
+                                <Route path="/" element={<HomePage />} />
+                                <Route path="/portfolio" element={<PortfolioPage />} />
+                                <Route path="/contact" element={<ContactPage />} />
+                            </Routes>
+                        </div>
+                        <Footer />
+                    </div>
+                </MemoryRouter>
+            );
+        };
+
+        const container = document.getElementById('root');
+        const root = createRoot(container);
+        root.render(<App />);
+    </script>
+</body>
+</html>

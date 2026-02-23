@@ -209,7 +209,7 @@ const HomePage = () => {
         <div className="animate-marquee hover:pause whitespace-nowrap flex items-center gap-32">
           {[1, 2, 3, 4].map((group) => (
             <div key={group} className="flex items-center gap-32">
-              <span className="text-3xl md:text-5xl font-serif font-black text-white/5 tracking-tighter uppercase italic">Continental Edge Studio</span>
+              <span className="text-3xl md:text-5xl font-serif font-black text-white/5 tracking-tighter uppercase italic">Sandeep Associates</span>
               <div className="flex items-center gap-4">
                 <span className="text-[10px] font-black uppercase tracking-[0.5em] text-primary">Est 2024</span>
                 <div className="w-1.5 h-1.5 bg-primary/20 rounded-full"></div>
@@ -226,8 +226,8 @@ const HomePage = () => {
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-8">
             <div className="space-y-4">
-              <span className="text-primary font-bold tracking-[0.4em] uppercase text-[10px]">What we do</span>
-              <h2 className="text-3xl md:text-4xl font-serif font-black">Crafting the Impossible.</h2>
+              <span className="text-primary font-bold tracking-[0.4em] uppercase text-[10px]">Expertise</span>
+              <h2 className="text-3xl md:text-4xl font-serif font-black">Crafting Excellence.</h2>
             </div>
             <p className="text-slate-400 max-w-sm font-light leading-relaxed border-l border-primary/30 pl-8">
               A holistic approach to architecture, interior curation, and master planning, executed with surgical precision.
@@ -261,7 +261,7 @@ const HomePage = () => {
               <motion.div
                 key={i}
                 variants={fadeIn}
-                className="p-16 bg-studio-dark transition-all duration-700 group relative overflow-hidden min-h-[500px] flex flex-col justify-end touch-none"
+                className="p-12 md:p-16 bg-studio-dark transition-all duration-700 group relative overflow-hidden min-h-[450px] md:min-h-[500px] flex flex-col justify-end"
               >
                 <div className="absolute inset-0 opacity-20 lg:opacity-0 group-hover:opacity-40 transition-all duration-1000 scale-110 group-hover:scale-100 grayscale md:grayscale group-hover:grayscale-0">
                   <img src={service.img} className="w-full h-full object-cover" alt="" />
@@ -269,13 +269,13 @@ const HomePage = () => {
                 </div>
 
                 <div className="relative z-10 pointer-events-none">
-                  <div className="mb-10 text-primary group-hover:scale-110 transition-transform duration-700 transform-gpu">{service.icon}</div>
-                  <h3 className="text-2xl font-bold mb-4 tracking-tight group-hover:text-primary transition-colors">{service.title}</h3>
-                  <p className="text-slate-400 font-light leading-relaxed mb-8 text-base group-hover:text-white transition-colors">{service.desc}</p>
+                  <div className="mb-6 md:mb-10 text-primary group-hover:scale-110 transition-transform duration-700 transform-gpu">{service.icon}</div>
+                  <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4 tracking-tight group-hover:text-primary transition-colors">{service.title}</h3>
+                  <p className="text-slate-400 font-light leading-relaxed mb-6 md:mb-8 text-sm md:text-base group-hover:text-white transition-colors">{service.desc}</p>
 
-                  <ul className="space-y-3 opacity-0 group-hover:opacity-100 transition-all duration-700 translate-y-4 group-hover:translate-y-0">
+                  <ul className="space-y-2 md:space-y-3 opacity-100 lg:opacity-0 group-hover:opacity-100 transition-all duration-700 translate-y-0 lg:translate-y-4 group-hover:translate-y-0">
                     {service.details.map((d, idx) => (
-                      <li key={idx} className="flex items-center gap-3 text-[10px] uppercase tracking-widest text-primary font-bold">
+                      <li key={idx} className="flex items-center gap-2 md:gap-3 text-[9px] md:text-[10px] uppercase tracking-widest text-primary font-bold">
                         <span className="w-1 h-1 bg-primary rounded-full"></span>
                         {d}
                       </li>
@@ -283,8 +283,8 @@ const HomePage = () => {
                   </ul>
                 </div>
 
-                <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-20 transition-all duration-700">
-                  <span className="text-7xl font-serif">0{i + 1}</span>
+                <div className="absolute top-0 right-0 p-6 md:p-8 opacity-5 group-hover:opacity-20 transition-all duration-700">
+                  <span className="text-5xl md:text-7xl font-serif">0{i + 1}</span>
                 </div>
                 <div className="absolute bottom-0 left-0 w-0 h-1 bg-primary group-hover:w-full transition-all duration-700"></div>
               </motion.div>

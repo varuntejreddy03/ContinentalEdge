@@ -1,4 +1,4 @@
-# 🏙️ Continental Edge Studio
+# 🏙️ Sandeep Associates
 
 > **Defining the Future Cityscape.**
 > A premium architectural and interior design studio based in Rajahmundry, merging structural logic with poetic design.
@@ -9,7 +9,7 @@
 
 ## 🏛️ About the Project
 
-Continental Edge is a high-authority architectural showcase built with a focus on premium aesthetics, cinematic motion, and an uncompromising mobile experience. The platform serves as a digital gallery for the studio's portfolio, ranging from residential masterpieces to commercial landmarks.
+Sandeep Associates is a high-authority architectural showcase built with a focus on premium aesthetics, cinematic motion, and an uncompromising mobile experience. The platform serves as a digital gallery for the studio's portfolio, ranging from residential masterpieces to commercial landmarks.
 
 ## ✨ Key Features
 
@@ -76,15 +76,14 @@ src/
 
 ## ✒️ Design Philosophy
 
-"Every line drawn must serve a purpose—both functional and emotional." Continental Edge is built on the belief that digital architecture should be as refined as the physical spaces we create.
+"Every line drawn must serve a purpose—both functional and emotional." Sandeep Associates is built on the belief that digital architecture should be as refined as the physical spaces we create.
 
 ---
 
 ### 📩 Contact the Studio
 
 - **Location**: Danavaipeta, Rajamahendravaram, AP
-- **Email**: continentaledgestudio@gmail.com
 - **Phone**: +91 81216 66611
 - **WhatsApp**: [Chat Now](https://wa.me/918121666611)
 
-© 2024 Continental Edge Studio. All Rights Reserved.
+© 2024 Sandeep Associates. All Rights Reserved.

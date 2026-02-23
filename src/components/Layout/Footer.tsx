@@ -1,10 +1,11 @@
 import { motion } from 'framer-motion';
-import { Instagram, Mail, Phone, MapPin, ArrowUpRight, Linkedin, Twitter } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Instagram, Phone, MapPin, ArrowUpRight, Linkedin, Twitter } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
 import Logo from '../Brand/Logo';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const navigate = useNavigate();
 
   const footerLinks = [
     { name: 'Home', path: '/' },
@@ -13,7 +14,7 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: <Instagram className="w-5 h-5" />, href: 'https://instagram.com/continentaledge_', name: 'Instagram' },
+    { icon: <Instagram className="w-5 h-5" />, href: 'https://instagram.com/sandeepassociates', name: 'Instagram' },
     { icon: <Linkedin className="w-5 h-5" />, href: '#', name: 'LinkedIn' },
     { icon: <Twitter className="w-5 h-5" />, href: '#', name: 'Twitter' }
   ];
@@ -38,10 +39,13 @@ const Footer = () => {
 
             <div className="flex flex-col items-start md:items-end space-y-4">
               <p className="text-[10px] uppercase tracking-[0.4em] text-primary font-bold">Inquiries</p>
-              <a href="mailto:continentaledgestudio@gmail.com" className="text-3xl md:text-4xl font-serif font-bold hover:text-primary transition-colors flex items-center gap-4 group">
+              <button
+                onClick={() => navigate('/contact')}
+                className="text-3xl md:text-4xl font-serif font-bold hover:text-primary transition-colors flex items-center gap-4 group text-left"
+              >
                 Let's Talk
                 <ArrowUpRight className="w-8 h-8 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-              </a>
+              </button>
             </div>
           </motion.div>
         </div>
@@ -73,10 +77,7 @@ const Footer = () => {
                 <Phone className="w-5 h-5 text-primary group-hover:scale-110 transition-transform" />
                 <span className="text-sm">+91 81216 66611</span>
               </a>
-              <a href="mailto:continentaledgestudio@gmail.com" className="flex items-center gap-4 text-slate-400 hover:text-white transition-colors group">
-                <Mail className="w-5 h-5 text-primary group-hover:scale-110 transition-transform" />
-                <span className="text-sm">continentaledgestudio@gmail.com</span>
-              </a>
+              {/* Removed Email Support */}
             </div>
           </div>
 
@@ -120,7 +121,7 @@ const Footer = () => {
       <div className="py-8 border-t border-white/5 bg-studio-dark">
         <div className="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-[10px] uppercase tracking-[0.3em] text-slate-500 font-bold">
-            &copy; {currentYear} Continental Edge Studio. All Rights Reserved.
+            &copy; {currentYear} Sandeep Associates. All Rights Reserved.
           </p>
           <div className="flex gap-8">
             <a href="#" className="text-[10px] uppercase tracking-[0.3em] text-slate-500 hover:text-white transition-colors font-bold">Privacy Policy</a>

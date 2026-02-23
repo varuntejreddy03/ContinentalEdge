@@ -20,12 +20,12 @@ const Logo: FC<LogoProps> = ({ className = "", size = 48 }) => {
           {/* Structural Frame */}
           <rect x="15" y="15" width="70" height="70" stroke="currentColor" strokeWidth="1" className="text-primary/10" />
 
-          {/* The "C" & "E" Abstract Fusion */}
+          {/* The "S" & "A" Abstract Fusion */}
           <motion.path
             initial={{ pathLength: 0, opacity: 0 }}
             animate={{ pathLength: 1, opacity: 1 }}
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-            d="M75 25H35C26.7157 25 20 31.7157 20 40V60C20 68.2843 26.7157 75 35 75H75"
+            d="M30 25H70C78.2843 25 85 31.7157 85 40V45C85 53.2843 78.2843 60 70 60H30C21.7157 60 15 66.7157 15 75V80C15 88.2843 21.7157 95 30 95H70"
             stroke="currentColor"
             strokeWidth="5"
             strokeLinecap="square"
@@ -36,19 +36,19 @@ const Logo: FC<LogoProps> = ({ className = "", size = 48 }) => {
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
             transition={{ delay: 0.8, duration: 0.8 }}
-            d="M35 42H75M35 50H80M35 58H75"
+            d="M40 40H75M25 60H60M40 80H75"
             stroke="currentColor"
             strokeWidth="3"
             strokeLinecap="square"
             className="text-primary/60 origin-left"
           />
 
-          {/* Accent Dot - The "Edge" */}
+          {/* Accent Dot - The "Edge" -> now "Associates" */}
           <motion.circle
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 1.5, type: "spring" }}
-            cx="80" cy="75" r="4"
+            cx="85" cy="25" r="4"
             fill="currentColor"
             className="text-primary"
           />
@@ -58,10 +58,10 @@ const Logo: FC<LogoProps> = ({ className = "", size = 48 }) => {
       <div className="flex flex-col">
         <div className="flex items-baseline gap-2">
           <span className="text-2xl md:text-3xl font-serif font-bold tracking-tight uppercase dark:text-white leading-none">
-            Continental
+            Sandeep
           </span>
           <span className="text-2xl md:text-3xl font-serif italic font-extralight text-primary leading-none">
-            Edge.
+            Associates.
           </span>
         </div>
         <div className="mt-2.5 flex items-center gap-3">

@@ -117,7 +117,7 @@ const Navbar = () => {
             </div>
 
             <div className="absolute bottom-10 left-10">
-              <p className="text-[10px] uppercase tracking-[0.4em] text-slate-500 font-bold">Continental Edge Studio</p>
+              <p className="text-[10px] uppercase tracking-[0.4em] text-slate-500 font-bold">Sandeep Associates</p>
             </div>
           </motion.div>
         )}

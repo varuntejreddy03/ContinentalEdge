@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send, MapPin, Phone, Mail, ArrowRight, MessageCircle, Clock, ArrowLeft } from 'lucide-react';
+import { Send, MapPin, Phone, ArrowRight, MessageCircle, Clock, ArrowLeft } from 'lucide-react';
 
 const ContactPage = () => {
   const [submitted, setSubmitted] = useState(false);
@@ -14,7 +14,7 @@ const ContactPage = () => {
     initial: { opacity: 0, y: 30 },
     whileInView: { opacity: 1, y: 0 },
     viewport: { once: true },
-    transition: { duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98] as const }
+    transition: { duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98] as [number, number, number, number] }
   };
 
   const contactData = [
@@ -38,13 +38,6 @@ const ContactPage = () => {
       content: "+91 81216 66611",
       action: "Start Chat",
       href: "https://wa.me/918121666611"
-    },
-    {
-      icon: <Mail className="text-primary w-6 h-6" />,
-      title: "Email Support",
-      content: "continentaledgestudio@gmail.com",
-      action: "Email Us",
-      href: "mailto:continentaledgestudio@gmail.com"
     }
   ];
 
@@ -78,7 +71,7 @@ const ContactPage = () => {
                 Let's Build the <br className="hidden md:block" /> <span className="text-stroke italic text-white/90">Impossible.</span>
               </h1>
               <p className="text-base md:text-lg text-slate-500 dark:text-slate-400 max-w-md font-light leading-relaxed">
-                Whether it's a structural masterpiece or a refined interior, our studio is ready to bring your vision to life with surgical precision.
+                Whether it's a structural masterpiece or a refined interior, Sandeep Associates is ready to bring your vision to life with surgical precision.
               </p>
             </div>
 
@@ -112,7 +105,7 @@ const ContactPage = () => {
 
           {/* Right Column: Form */}
           <motion.div
-            initial={{ opacity: 0, x: window.innerWidth < 1024 ? 0 : 50, y: window.innerWidth < 1024 ? 30 : 0 }}
+            initial={{ opacity: 0, x: typeof window !== 'undefined' && window.innerWidth < 1024 ? 0 : 50, y: typeof window !== 'undefined' && window.innerWidth < 1024 ? 30 : 0 }}
             animate={{ opacity: 1, x: 0, y: 0 }}
             transition={{ duration: 1, delay: 0.3 }}
             className="lg:col-span-12 xl:col-span-7"
@@ -168,7 +161,7 @@ const ContactPage = () => {
                     <div className="flex flex-col gap-3 group md:col-span-2">
                       <label className="text-[10px] uppercase tracking-[0.3em] text-slate-500 font-bold group-focus-within:text-primary transition-colors">Scope of service</label>
                       <select required className="w-full bg-transparent border-0 border-b border-slate-300 dark:border-white/10 focus:ring-0 focus:border-primary px-0 py-4 text-sm text-slate-400 dark:text-white transition-all cursor-pointer appearance-none">
-                        <option disabled selected value="" className="bg-surfaceLight dark:bg-studio-dark text-slate-900 dark:text-white">Select from our expertise</option>
+                        <option disabled value="" className="bg-surfaceLight dark:bg-studio-dark text-slate-900 dark:text-white">Select from our expertise</option>
                         <option value="residential" className="bg-surfaceLight dark:bg-studio-dark text-slate-900 dark:text-white">Architectural Planning</option>
                         <option value="commercial" className="bg-surfaceLight dark:bg-studio-dark text-slate-900 dark:text-white">Interior Curation</option>
                         <option value="interior" className="bg-surfaceLight dark:bg-studio-dark text-slate-900 dark:text-white">Turnkey Execution</option>

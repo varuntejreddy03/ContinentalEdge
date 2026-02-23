@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform, type Variants } from 'framer-motion';
-import { ArrowRight, Zap, ShieldCheck, Compass, Layers, PenTool } from 'lucide-react';
+import { ArrowRight, Zap, ShieldCheck, Compass, Layers, PenTool, CheckCircle2 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useRef } from 'react';
 
@@ -100,12 +100,12 @@ const HomePage = () => {
             <div className="space-y-4">
               <CharacterAnimation
                 text="Defining the"
-                className="text-5xl md:text-7xl lg:text-8xl font-serif font-black tracking-tighter text-white leading-none"
+                className="text-4xl md:text-6xl lg:text-7xl font-serif font-black tracking-tighter text-white leading-none uppercase"
                 delay={0.2}
               />
               <CharacterAnimation
                 text="Future Cityscape."
-                className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold italic tracking-tighter text-primary leading-none"
+                className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold italic tracking-tighter text-primary leading-none"
                 delay={0.8}
               />
             </div>
@@ -115,9 +115,9 @@ const HomePage = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 2, duration: 1.2 }}
               style={{ opacity }}
-              className="text-lg md:text-xl text-slate-300 font-light tracking-wide max-w-2xl leading-relaxed"
+              className="text-base md:text-lg text-slate-300 font-light tracking-wide max-w-2xl leading-relaxed"
             >
-              We merge structural logic with poetic design to create spaces that breathe, inspire, and endure for generations.
+              At Sandeep Associates, we merge structural logic with poetic design to create spaces that breathe, inspire, and endure for generations.
             </motion.p>
 
             <motion.div
@@ -150,14 +150,14 @@ const HomePage = () => {
       </section>
 
       {/* Philosophy Section - Immersive Scroll */}
-      <section className="py-32 lg:py-48 content-auto relative">
-        <div className="absolute top-0 right-0 p-10 md:p-20 opacity-[0.03] pointer-events-none select-none">
-          <h2 className="text-[25vw] md:text-[15vw] font-serif font-black leading-none uppercase">Edge</h2>
+      <section className="py-24 lg:py-32 content-auto relative">
+        <div className="absolute top-0 right-0 p-10 md:p-20 opacity-[0.02] pointer-events-none select-none">
+          <h2 className="text-[20vw] md:text-[12vw] font-serif font-black leading-none uppercase">Pure</h2>
         </div>
 
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="grid lg:grid-cols-12 gap-16 items-center">
-            <motion.div initial="initial" whileInView="whileInView" viewport={{ once: true, margin: "-100px" }} variants={fadeIn} className="lg:col-span-12 mb-20">
+            <motion.div initial="initial" whileInView="whileInView" viewport={{ once: true, margin: "-100px" }} variants={fadeIn} className="lg:col-span-12 mb-16">
               <span className="text-primary font-bold tracking-[0.4em] uppercase text-[10px] block mb-4">Our Philosophy</span>
               <h2 className="text-3xl md:text-5xl font-serif font-black dark:text-white leading-tight">
                 Architectural Curation. <br className="hidden md:block" />
@@ -179,13 +179,13 @@ const HomePage = () => {
 
             <motion.div initial="initial" whileInView="whileInView" viewport={{ once: true }} variants={stagger} className="lg:col-span-7 space-y-12 pl-0 lg:pl-16">
               <div className="space-y-6">
-                <p className="text-slate-500 dark:text-slate-300 text-xl font-light leading-relaxed">
+                <p className="text-slate-500 dark:text-slate-300 text-lg md:text-xl font-light leading-relaxed">
                   Every line drawn must serve a purpose—both functional and emotional. We don't just build structures; we curate the backdrop of your most meaningful moments.
                 </p>
-                <div className="w-24 h-1 bg-primary"></div>
+                <div className="w-20 h-0.5 bg-primary"></div>
               </div>
 
-              <div className="grid sm:grid-cols-2 gap-12">
+              <div className="grid sm:grid-cols-2 gap-10 md:gap-12">
                 {[
                   { icon: <Compass />, title: "Precision", text: "Micro-detailed planning from foundation to finish." },
                   { icon: <Layers />, title: "Materiality", text: "Sourcing unique textures that tell a story." },
@@ -193,9 +193,9 @@ const HomePage = () => {
                   { icon: <ShieldCheck />, title: "Reliability", text: "Timeline-driven execution without compromises." }
                 ].map((item, i) => (
                   <motion.div key={i} variants={fadeIn} className="group">
-                    <div className="text-primary mb-4 w-10 h-10 group-hover:scale-110 transition-transform">{item.icon}</div>
-                    <h4 className="text-lg font-bold mb-2 dark:text-white uppercase tracking-wider">{item.title}</h4>
-                    <p className="text-slate-500 text-sm font-light leading-relaxed">{item.text}</p>
+                    <div className="text-primary mb-4 w-9 h-9 group-hover:scale-110 transition-transform">{item.icon}</div>
+                    <h4 className="text-base font-bold mb-2 dark:text-white uppercase tracking-wider">{item.title}</h4>
+                    <p className="text-slate-500 text-xs md:text-sm font-light leading-relaxed">{item.text}</p>
                   </motion.div>
                 ))}
               </div>
@@ -205,31 +205,31 @@ const HomePage = () => {
       </section>
 
       {/* Corporate Marquee */}
-      <section className="bg-surfaceDark py-16 overflow-hidden relative border-y border-white/5">
+      <section className="bg-surfaceDark py-12 md:py-16 overflow-hidden relative border-y border-white/5">
         <div className="animate-marquee hover:pause whitespace-nowrap flex items-center gap-32">
           {[1, 2, 3, 4].map((group) => (
-            <div key={group} className="flex items-center gap-32">
-              <span className="text-3xl md:text-5xl font-serif font-black text-white/5 tracking-tighter uppercase italic">Sandeep Associates</span>
+            <div key={group} className="flex items-center gap-24 md:gap-32">
+              <span className="text-2xl md:text-4xl font-serif font-black text-white/5 tracking-tighter uppercase italic">Sandeep Associates</span>
               <div className="flex items-center gap-4">
-                <span className="text-[10px] font-black uppercase tracking-[0.5em] text-primary">Est 2024</span>
-                <div className="w-1.5 h-1.5 bg-primary/20 rounded-full"></div>
-                <span className="text-[10px] font-black uppercase tracking-[0.5em] text-white/40">Rajahmundry</span>
+                <span className="text-[9px] font-black uppercase tracking-[0.4em] text-primary">Est 2024</span>
+                <div className="w-1 h-1 bg-primary/20 rounded-full"></div>
+                <span className="text-[9px] font-black uppercase tracking-[0.4em] text-white/40">Rajahmundry</span>
               </div>
-              <span className="text-3xl md:text-5xl font-serif font-black text-white/5 tracking-tighter uppercase leading-none">Visionary Design</span>
+              <span className="text-2xl md:text-4xl font-serif font-black text-white/5 tracking-tighter uppercase leading-none">Visionary Design</span>
             </div>
           ))}
         </div>
       </section>
 
       {/* Expertise Section */}
-      <section className="py-32 lg:py-48 bg-studio-dark text-white content-auto overflow-hidden">
+      <section className="py-24 lg:py-32 bg-studio-dark text-white content-auto overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-20 gap-8">
             <div className="space-y-4">
               <span className="text-primary font-bold tracking-[0.4em] uppercase text-[10px]">What we do</span>
               <h2 className="text-3xl md:text-4xl font-serif font-black">Crafting the Impossible.</h2>
             </div>
-            <p className="text-slate-400 max-w-sm font-light leading-relaxed border-l border-primary/30 pl-8">
+            <p className="text-slate-400 max-w-sm font-light leading-relaxed border-l border-primary/30 pl-8 text-sm md:text-base">
               A holistic approach to architecture, interior curation, and master planning, executed with surgical precision.
             </p>
           </div>
@@ -239,21 +239,21 @@ const HomePage = () => {
               {
                 title: "Architectural Planning",
                 desc: "Strategic blueprints that harmonize structural integrity with aesthetic vision.",
-                icon: <Compass className="w-10 h-10" />,
+                icon: <Compass className="w-9 h-9 md:w-10 h-10" />,
                 details: ["BIM Modeling", "Blueprints", "Structural Analysis"],
                 img: "/images/12.jpg.jpeg"
               },
               {
                 title: "Interior Curation",
                 desc: "Immersive interior environments tailored to modern lifestyle and comfort.",
-                icon: <Zap className="w-10 h-10" />,
+                icon: <Zap className="w-9 h-9 md:w-10 h-10" />,
                 details: ["3D Rendering", "Bespoke Carpentry", "Lighting Design"],
                 img: "/images/salon-interior.jpg"
               },
               {
                 title: "Execution & Turnkey",
                 desc: "Seamless project realization from breaking ground to the final handover.",
-                icon: <ShieldCheck className="w-10 h-10" />,
+                icon: <ShieldCheck className="w-9 h-9 md:w-10 h-10" />,
                 details: ["Project Oversight", "Material Sourcing", "Landscaping"],
                 img: "/images/19.jpg.jpeg"
               }
@@ -261,7 +261,7 @@ const HomePage = () => {
               <motion.div
                 key={i}
                 variants={fadeIn}
-                className="p-12 md:p-16 bg-studio-dark transition-all duration-700 group relative overflow-hidden min-h-[450px] md:min-h-[500px] flex flex-col justify-end"
+                className="p-10 md:p-14 bg-studio-dark transition-all duration-700 group relative overflow-hidden min-h-[400px] md:min-h-[500px] flex flex-col justify-end"
               >
                 <div className="absolute inset-0 opacity-20 lg:opacity-0 group-hover:opacity-40 transition-all duration-1000 scale-110 group-hover:scale-100 grayscale md:grayscale group-hover:grayscale-0">
                   <img src={service.img} className="w-full h-full object-cover" alt="" />
@@ -293,8 +293,81 @@ const HomePage = () => {
         </div>
       </section>
 
+      {/* Methodology Section - New Added Layer */}
+      <section className="py-24 lg:py-48 bg-surfaceLight dark:bg-surfaceDark relative">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="grid lg:grid-cols-12 gap-16 lg:gap-24">
+            <motion.div initial="initial" whileInView="whileInView" viewport={{ once: true }} variants={fadeIn} className="lg:col-span-12 mb-10 text-center md:text-left">
+              <span className="text-primary font-bold tracking-[0.4em] uppercase text-[10px] block mb-4">The Methodology</span>
+              <h2 className="text-3xl md:text-5xl font-serif font-black dark:text-white leading-tight">
+                Our Four-Phase <br className="hidden md:block" />
+                <span className="italic text-primary/80">Design Integrity.</span>
+              </h2>
+            </motion.div>
+
+            {[
+              {
+                step: "01",
+                title: "Concept Discovery",
+                desc: "We dive into your vision, lifestyle, and site context to define the core DNA of the project.",
+                points: ["Client Briefing", "Site Analysis", "Initial Sketches"]
+              },
+              {
+                step: "02",
+                title: "Surgical Design",
+                desc: "Translating concepts into technical blueprints with structural logic and artistic expression.",
+                points: ["3D Visualization", "Material Boards", "Technical Systems"]
+              },
+              {
+                step: "03",
+                title: "Active Creation",
+                desc: "Executing the vision with curated materials and precision-led engineering oversight.",
+                points: ["Project Management", "Vendor Coordination", "Quality Control"]
+              },
+              {
+                step: "04",
+                title: "Final Curation",
+                desc: "The transition from structure to space. Every detail polished for immediate inspiration.",
+                points: ["Interiors Fit-out", "Lighting Tuning", "Project Handover"]
+              }
+            ].map((phase, i) => (
+              <motion.div
+                key={i}
+                initial="initial"
+                whileInView="whileInView"
+                viewport={{ once: true }}
+                variants={fadeIn}
+                className="lg:col-span-3 space-y-8 group"
+              >
+                <div className="flex items-center gap-6">
+                  <span className="text-4xl md:text-5xl font-serif font-black text-primary/20 group-hover:text-primary transition-colors duration-500">{phase.step}</span>
+                  <div className="h-[1px] flex-grow bg-white/10"></div>
+                </div>
+                <div className="space-y-4">
+                  <h4 className="text-lg font-bold dark:text-white uppercase tracking-wider">{phase.title}</h4>
+                  <p className="text-slate-500 text-sm font-light leading-relaxed">{phase.desc}</p>
+                </div>
+                <ul className="space-y-2 pt-4">
+                  {phase.points.map((p, idx) => (
+                    <li key={idx} className="flex items-center gap-3 text-[9px] font-bold uppercase tracking-widest text-slate-400 group-hover:text-primary/70 transition-colors">
+                      <CheckCircle2 size={12} className="text-primary/30" />
+                      {p}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* Floating background decorative number */}
+        <div className="absolute bottom-0 left-0 p-10 md:p-20 opacity-[0.02] pointer-events-none select-none overflow-hidden">
+          <h2 className="text-[30vw] font-serif font-black leading-none uppercase -ml-20">Process</h2>
+        </div>
+      </section>
+
       {/* Final CTA Section */}
-      <section className="py-48 relative overflow-hidden bg-studio-dark content-auto">
+      <section className="py-32 lg:py-48 relative overflow-hidden bg-studio-dark content-auto">
         <motion.div
           initial={{ scale: 1.1 }}
           whileInView={{ scale: 1 }}
@@ -308,7 +381,7 @@ const HomePage = () => {
         <div className="max-w-5xl mx-auto px-6 text-center space-y-12 relative z-10">
           <motion.div initial="initial" whileInView="whileInView" viewport={{ once: true }} variants={fadeIn} className="space-y-6">
             <span className="text-primary font-bold tracking-[0.6em] uppercase text-xs">Let's talk about your project</span>
-            <h2 className="text-5xl md:text-7xl lg:text-8xl font-serif font-black text-white leading-[0.9] tracking-tighter">
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-serif font-black text-white leading-[0.9] tracking-tighter uppercase">
               Create The <br />
               <span className="italic text-primary/80">Extraordinary.</span>
             </h2>

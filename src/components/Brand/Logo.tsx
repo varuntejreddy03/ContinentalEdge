@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import type { FC } from 'react';
 import { motion } from 'framer-motion';
 
 interface LogoProps {
@@ -24,7 +24,7 @@ const Logo: FC<LogoProps> = ({ className = "", size = 48 }) => {
           <motion.path
             initial={{ pathLength: 0, opacity: 0 }}
             animate={{ pathLength: 1, opacity: 1 }}
-            transition={{ duration: 1.2, ease: "easeOut" }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             d="M75 25H35C26.7157 25 20 31.7157 20 40V60C20 68.2843 26.7157 75 35 75H75"
             stroke="currentColor"
             strokeWidth="5"

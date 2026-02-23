@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, type Variants } from 'framer-motion';
 import { ArrowRight, Zap, ShieldCheck, Compass, Layers, PenTool } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useRef } from 'react';
@@ -6,7 +6,7 @@ import { useRef } from 'react';
 const CharacterAnimation = ({ text, className, delay = 0 }: { text: string; className?: string; delay?: number }) => {
   const letters = Array.from(text);
 
-  const container = {
+  const container: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -17,14 +17,14 @@ const CharacterAnimation = ({ text, className, delay = 0 }: { text: string; clas
     },
   };
 
-  const child = {
+  const child: Variants = {
     visible: {
       opacity: 1,
       y: 0,
       filter: "blur(0px)",
       transition: {
         duration: 0.8,
-        ease: [0.2, 0.65, 0.3, 0.9],
+        ease: [0.2, 0.65, 0.3, 0.9] as [number, number, number, number],
       },
     },
     hidden: {
@@ -56,7 +56,7 @@ const CharacterAnimation = ({ text, className, delay = 0 }: { text: string; clas
 
 const HomePage = () => {
   const navigate = useNavigate();
-  const targetRef = useRef(null);
+  const targetRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
     offset: ["start start", "end start"]
@@ -65,18 +65,21 @@ const HomePage = () => {
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
 
-  const fadeIn = {
+  const fadeIn: Variants = {
     initial: { opacity: 0, y: 30 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, margin: "-100px" },
-    transition: { duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98] as const }
+    whileInView: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98] as [number, number, number, number] }
+    }
   };
 
-  const stagger = {
+  const stagger: Variants = {
     initial: { opacity: 0 },
-    whileInView: { opacity: 1 },
-    viewport: { once: true },
-    transition: { staggerChildren: 0.15 }
+    whileInView: {
+      opacity: 1,
+      transition: { staggerChildren: 0.15 }
+    }
   };
 
   return (
@@ -94,8 +97,6 @@ const HomePage = () => {
 
         <div className="relative z-20 max-w-7xl mx-auto px-6 lg:px-12 w-full pt-10">
           <div className="max-w-4xl space-y-10">
-            {/* Removed Redundant "Studio of Architecture" Text */}
-
             <div className="space-y-4">
               <CharacterAnimation
                 text="Defining the"
@@ -156,7 +157,7 @@ const HomePage = () => {
 
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="grid lg:grid-cols-12 gap-16 items-center">
-            <motion.div {...fadeIn} className="lg:col-span-12 mb-20">
+            <motion.div initial="initial" whileInView="whileInView" viewport={{ once: true, margin: "-100px" }} variants={fadeIn} className="lg:col-span-12 mb-20">
               <span className="text-primary font-bold tracking-[0.4em] uppercase text-[10px] block mb-4">Our Philosophy</span>
               <h2 className="text-3xl md:text-5xl font-serif font-black dark:text-white leading-tight">
                 Architectural Curation. <br className="hidden md:block" />
@@ -164,7 +165,7 @@ const HomePage = () => {
               </h2>
             </motion.div>
 
-            <motion.div {...fadeIn} className="lg:col-span-5 relative">
+            <motion.div initial="initial" whileInView="whileInView" viewport={{ once: true, margin: "-100px" }} variants={fadeIn} className="lg:col-span-5 relative">
               <div className="relative z-10 aspect-[3/4] overflow-hidden rounded-sm group grayscale hover:grayscale-0 transition-all duration-1000">
                 <img
                   alt="Design Philosophy"
@@ -176,7 +177,7 @@ const HomePage = () => {
               <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-primary/10 -z-10 animate-float"></div>
             </motion.div>
 
-            <motion.div {...stagger} className="lg:col-span-7 space-y-12 pl-0 lg:pl-16">
+            <motion.div initial="initial" whileInView="whileInView" viewport={{ once: true }} variants={stagger} className="lg:col-span-7 space-y-12 pl-0 lg:pl-16">
               <div className="space-y-6">
                 <p className="text-slate-500 dark:text-slate-300 text-xl font-light leading-relaxed">
                   Every line drawn must serve a purpose—both functional and emotional. We don't just build structures; we curate the backdrop of your most meaningful moments.
@@ -233,7 +234,7 @@ const HomePage = () => {
             </p>
           </div>
 
-          <motion.div {...stagger} className="grid lg:grid-cols-3 gap-px bg-white/5 border border-white/5">
+          <motion.div initial="initial" whileInView="whileInView" viewport={{ once: true }} variants={stagger} className="grid lg:grid-cols-3 gap-px bg-white/5 border border-white/5">
             {[
               {
                 title: "Architectural Planning",
@@ -262,7 +263,6 @@ const HomePage = () => {
                 variants={fadeIn}
                 className="p-16 bg-studio-dark transition-all duration-700 group relative overflow-hidden min-h-[500px] flex flex-col justify-end touch-none"
               >
-                {/* Mobile Friendly Image Reveal */}
                 <div className="absolute inset-0 opacity-20 lg:opacity-0 group-hover:opacity-40 transition-all duration-1000 scale-110 group-hover:scale-100 grayscale md:grayscale group-hover:grayscale-0">
                   <img src={service.img} className="w-full h-full object-cover" alt="" />
                   <div className="absolute inset-0 bg-gradient-to-t from-studio-dark via-studio-dark/60 to-transparent"></div>
@@ -306,7 +306,7 @@ const HomePage = () => {
         </motion.div>
 
         <div className="max-w-5xl mx-auto px-6 text-center space-y-12 relative z-10">
-          <motion.div initial={fadeIn.initial} whileInView={fadeIn.whileInView} viewport={fadeIn.viewport} transition={fadeIn.transition} className="space-y-6">
+          <motion.div initial="initial" whileInView="whileInView" viewport={{ once: true }} variants={fadeIn} className="space-y-6">
             <span className="text-primary font-bold tracking-[0.6em] uppercase text-xs">Let's talk about your project</span>
             <h2 className="text-5xl md:text-7xl lg:text-8xl font-serif font-black text-white leading-[0.9] tracking-tighter">
               Create The <br />
@@ -314,7 +314,7 @@ const HomePage = () => {
             </h2>
           </motion.div>
 
-          <motion.div initial={fadeIn.initial} whileInView={fadeIn.whileInView} viewport={fadeIn.viewport} transition={fadeIn.transition} className="flex flex-col items-center gap-10">
+          <motion.div initial="initial" whileInView="whileInView" viewport={{ once: true }} variants={fadeIn} className="flex flex-col items-center gap-10">
             <motion.button
               whileHover={{ scale: 1.05, boxShadow: "0 0 50px rgba(193, 169, 108, 0.3)" }}
               whileTap={{ scale: 0.95 }}

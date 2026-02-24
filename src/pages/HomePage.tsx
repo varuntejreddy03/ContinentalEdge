@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform, type Variants } from 'framer-motion';
 import { ArrowRight, Zap, ShieldCheck, Compass, Layers, PenTool, CheckCircle2 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 
 const CharacterAnimation = ({ text, className, delay = 0 }: { text: string; className?: string; delay?: number }) => {
   const letters = Array.from(text);
@@ -57,6 +57,14 @@ const CharacterAnimation = ({ text, className, delay = 0 }: { text: string; clas
 const HomePage = () => {
   const navigate = useNavigate();
   const targetRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 0.5;
+    }
+  }, []);
+
   const { scrollYProgress } = useScroll({
     target: targetRef,
     offset: ["start start", "end start"]
@@ -88,14 +96,18 @@ const HomePage = () => {
       <section ref={targetRef} className="relative h-screen w-full flex items-center overflow-hidden">
         <motion.div style={{ y }} className="absolute inset-0 z-0 h-[120%]">
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent z-10"></div>
-          <img
-            alt="Hero Architectural Render"
+          <video
+            ref={videoRef}
+            autoPlay
+            muted
+            loop
+            playsInline
             className="w-full h-full object-cover scale-110"
-            src="/images/hiwaga-hero.jpg"
+            src="/images/elevation design @ ubalanka video 1.mp4"
           />
         </motion.div>
 
-        <div className="relative z-20 max-w-7xl mx-auto px-6 lg:px-12 w-full pt-10">
+        <div className="relative z-20 max-w-7xl mx-auto px-4 md:px-6 lg:px-12 w-full pt-10">
           <div className="max-w-4xl space-y-10">
             <div className="space-y-4">
               <CharacterAnimation
@@ -105,7 +117,7 @@ const HomePage = () => {
               />
               <CharacterAnimation
                 text="Future Cityscape."
-                className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold italic tracking-tighter text-primary leading-none"
+                className="text-3xl md:text-6xl lg:text-7xl font-serif font-bold italic tracking-tighter text-primary leading-none"
                 delay={0.8}
               />
             </div>
@@ -124,23 +136,23 @@ const HomePage = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 2.2, duration: 1 }}
-              className="flex flex-col sm:flex-row gap-6 pt-10"
+              className="flex flex-col sm:flex-row gap-4 md:gap-6 pt-10"
             >
               <motion.button
                 whileHover={{ scale: 1.02, backgroundColor: "#fff", color: "#000" }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => navigate('/portfolio')}
-                className="bg-primary text-surfaceDark px-12 py-5 text-xs font-bold tracking-[0.3em] uppercase transition-all flex items-center justify-center gap-3 group rounded-sm shadow-2xl"
+                className="bg-primary text-surfaceDark px-8 md:px-12 py-4 md:py-5 text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase transition-all flex items-center justify-center gap-3 rounded-sm shadow-2xl"
               >
                 Explore Portfolio
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
+                <ArrowRight className="w-4 h-4" />
               </motion.button>
 
               <motion.button
                 whileHover={{ scale: 1.02, borderColor: "#C1A96C" }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => navigate('/contact')}
-                className="glass text-white px-12 py-5 text-xs font-bold tracking-[0.3em] uppercase transition-all rounded-sm border border-white/10 text-center"
+                className="glass text-white px-8 md:px-12 py-4 md:py-5 text-[10px] md:text-xs font-bold tracking-[0.3em] uppercase transition-all rounded-sm border border-white/10 text-center"
               >
                 Inquire now
               </motion.button>
@@ -155,9 +167,9 @@ const HomePage = () => {
           <h2 className="text-[20vw] md:text-[12vw] font-serif font-black leading-none uppercase">Pure</h2>
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-12">
           <div className="grid lg:grid-cols-12 gap-16 items-center">
-            <motion.div initial="initial" whileInView="whileInView" viewport={{ once: true, margin: "-100px" }} variants={fadeIn} className="lg:col-span-12 mb-16">
+            <motion.div initial="initial" whileInView="whileInView" viewport={{ once: true, margin: "-100px" }} variants={fadeIn} className="lg:col-span-12 mb-12">
               <span className="text-primary font-bold tracking-[0.4em] uppercase text-[10px] block mb-4">Our Philosophy</span>
               <h2 className="text-3xl md:text-5xl font-serif font-black dark:text-white leading-tight">
                 Architectural Curation. <br className="hidden md:block" />
@@ -166,11 +178,11 @@ const HomePage = () => {
             </motion.div>
 
             <motion.div initial="initial" whileInView="whileInView" viewport={{ once: true, margin: "-100px" }} variants={fadeIn} className="lg:col-span-5 relative">
-              <div className="relative z-10 aspect-[3/4] overflow-hidden rounded-sm group grayscale hover:grayscale-0 transition-all duration-1000">
+              <div className="relative z-10 aspect-square md:aspect-[3/4] overflow-hidden rounded-sm group grayscale hover:grayscale-0 transition-all duration-1000 mx-4 md:mx-0">
                 <img
                   alt="Design Philosophy"
                   className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
-                  src="/images/014.jpg.jpeg"
+                  src="/images/AKSHARA_THEATRE main.jpeg"
                   loading="lazy"
                 />
               </div>
@@ -206,24 +218,21 @@ const HomePage = () => {
 
       {/* Corporate Marquee */}
       <section className="bg-surfaceDark py-12 md:py-16 overflow-hidden relative border-y border-white/5">
-        <div className="animate-marquee hover:pause whitespace-nowrap flex items-center gap-32">
+        <div className="animate-marquee hover:pause whitespace-nowrap flex items-center gap-16 md:gap-32">
           {[1, 2, 3, 4].map((group) => (
-            <div key={group} className="flex items-center gap-24 md:gap-32">
-              <span className="text-2xl md:text-4xl font-serif font-black text-white/5 tracking-tighter uppercase italic">Sandeep Associates</span>
-              <div className="flex items-center gap-4">
-                <span className="text-[9px] font-black uppercase tracking-[0.4em] text-primary">Est 2024</span>
-                <div className="w-1 h-1 bg-primary/20 rounded-full"></div>
-                <span className="text-[9px] font-black uppercase tracking-[0.4em] text-white/40">Rajahmundry</span>
+            <div key={group} className="flex items-center gap-16 md:gap-32">
+              <span className="text-xl md:text-4xl font-serif font-black text-white/5 tracking-tighter uppercase italic whitespace-nowrap text-stroke-sm">Sandeep Associates</span>
+              <div className="flex items-center gap-4 shrink-0">
+                <span className="text-[8px] md:text-[9px] font-black uppercase tracking-[0.4em] text-primary">Est 2024</span>
               </div>
-              <span className="text-2xl md:text-4xl font-serif font-black text-white/5 tracking-tighter uppercase leading-none">Visionary Design</span>
             </div>
           ))}
         </div>
       </section>
 
       {/* Expertise Section */}
-      <section className="py-24 lg:py-32 bg-studio-dark text-white content-auto overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+      <section className="py-24 md:py-32 lg:py-48 bg-white dark:bg-studio-dark relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-12">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-20 gap-8">
             <div className="space-y-4">
               <span className="text-primary font-bold tracking-[0.4em] uppercase text-[10px]">What we do</span>
@@ -241,27 +250,27 @@ const HomePage = () => {
                 desc: "Strategic blueprints that harmonize structural integrity with aesthetic vision.",
                 icon: <Compass className="w-9 h-9 md:w-10 h-10" />,
                 details: ["BIM Modeling", "Blueprints", "Structural Analysis"],
-                img: "/images/12.jpg.jpeg"
+                img: "/images/dr. gowtham reddy flat main.jpeg"
               },
               {
                 title: "Interior Curation",
                 desc: "Immersive interior environments tailored to modern lifestyle and comfort.",
                 icon: <Zap className="w-9 h-9 md:w-10 h-10" />,
                 details: ["3D Rendering", "Bespoke Carpentry", "Lighting Design"],
-                img: "/images/salon-interior.jpg"
+                img: "/images/drivein ph-ravulapem main.jpeg"
               },
               {
                 title: "Execution & Turnkey",
                 desc: "Seamless project realization from breaking ground to the final handover.",
                 icon: <ShieldCheck className="w-9 h-9 md:w-10 h-10" />,
                 details: ["Project Oversight", "Material Sourcing", "Landscaping"],
-                img: "/images/19.jpg.jpeg"
+                img: "/images/elevation design .jpeg"
               }
             ].map((service, i) => (
               <motion.div
                 key={i}
                 variants={fadeIn}
-                className="p-10 md:p-14 bg-studio-dark transition-all duration-700 group relative overflow-hidden min-h-[400px] md:min-h-[500px] flex flex-col justify-end"
+                className="p-8 md:p-14 bg-studio-dark transition-all duration-700 group relative overflow-hidden min-h-[350px] md:min-h-[500px] flex flex-col justify-end"
               >
                 <div className="absolute inset-0 opacity-20 lg:opacity-0 group-hover:opacity-40 transition-all duration-1000 scale-110 group-hover:scale-100 grayscale md:grayscale group-hover:grayscale-0">
                   <img src={service.img} className="w-full h-full object-cover" alt="" />
@@ -367,37 +376,39 @@ const HomePage = () => {
       </section>
 
       {/* Final CTA Section */}
-      <section className="py-32 lg:py-48 relative overflow-hidden bg-studio-dark content-auto">
-        <motion.div
-          initial={{ scale: 1.1 }}
-          whileInView={{ scale: 1 }}
-          transition={{ duration: 1.5 }}
-          className="absolute inset-0 opacity-20"
-        >
-          <img src="/images/hiwaga-hero.jpg" className="w-full h-full object-cover grayscale" alt="" />
-          <div className="absolute inset-0 bg-gradient-to-b from-studio-dark via-transparent to-studio-dark"></div>
-        </motion.div>
-
-        <div className="max-w-5xl mx-auto px-6 text-center space-y-12 relative z-10">
-          <motion.div initial="initial" whileInView="whileInView" viewport={{ once: true }} variants={fadeIn} className="space-y-6">
-            <span className="text-primary font-bold tracking-[0.6em] uppercase text-xs">Let's talk about your project</span>
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-serif font-black text-white leading-[0.9] tracking-tighter uppercase">
-              Create The <br />
-              <span className="italic text-primary/80">Extraordinary.</span>
-            </h2>
+      <section className="py-24 md:py-48 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-12">
+          <motion.div
+            initial={{ scale: 1.1 }}
+            whileInView={{ scale: 1 }}
+            transition={{ duration: 1.5 }}
+            className="absolute inset-0 opacity-20"
+          >
+            <img src="/images/elevation design @ ubalanka 3.jpeg" className="w-full h-full object-cover grayscale" alt="" />
+            <div className="absolute inset-0 bg-gradient-to-b from-studio-dark via-transparent to-studio-dark"></div>
           </motion.div>
 
-          <motion.div initial="initial" whileInView="whileInView" viewport={{ once: true }} variants={fadeIn} className="flex flex-col items-center gap-10">
-            <motion.button
-              whileHover={{ scale: 1.05, boxShadow: "0 0 50px rgba(193, 169, 108, 0.3)" }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => navigate('/contact')}
-              className="bg-primary hover:bg-white hover:text-surfaceDark text-surfaceDark px-20 py-6 text-sm font-black tracking-[0.4em] uppercase transition-all rounded-sm shadow-2xl relative group overflow-hidden"
-            >
-              <span className="relative z-10">Start Your Journey</span>
-              <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
-            </motion.button>
-          </motion.div>
+          <div className="max-w-5xl mx-auto px-6 text-center space-y-12 relative z-10">
+            <motion.div initial="initial" whileInView="whileInView" viewport={{ once: true }} variants={fadeIn} className="space-y-6">
+              <span className="text-primary font-bold tracking-[0.6em] uppercase text-xs">Let's talk about your project</span>
+              <h2 className="text-4xl md:text-6xl lg:text-7xl font-serif font-black text-white leading-[0.9] tracking-tighter uppercase">
+                Create The <br />
+                <span className="italic text-primary/80">Extraordinary.</span>
+              </h2>
+            </motion.div>
+
+            <motion.div initial="initial" whileInView="whileInView" viewport={{ once: true }} variants={fadeIn} className="flex flex-col items-center gap-10">
+              <motion.button
+                whileHover={{ scale: 1.05, boxShadow: "0 0 50px rgba(193, 169, 108, 0.3)" }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => navigate('/contact')}
+                className="bg-primary hover:bg-white hover:text-surfaceDark text-surfaceDark px-20 py-6 text-sm font-black tracking-[0.4em] uppercase transition-all rounded-sm shadow-2xl relative group overflow-hidden"
+              >
+                <span className="relative z-10">Start Your Journey</span>
+                <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
+              </motion.button>
+            </motion.div>
+          </div>
         </div>
       </section>
     </div>

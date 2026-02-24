@@ -32,7 +32,7 @@ const PortfolioPage = () => {
 
   return (
     <div className="pt-32 pb-24 bg-surfaceLight dark:bg-surfaceDark min-h-screen">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-12">
         <motion.button
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -51,9 +51,9 @@ const PortfolioPage = () => {
             className="space-y-6"
           >
             <div className="space-y-4">
-              <span className="text-primary font-bold tracking-[0.4em] uppercase text-[10px]">Portfolio</span>
-              <h1 className="text-4xl md:text-6xl font-serif font-black dark:text-white leading-tight tracking-tight">Iconic Spaces.</h1>
-              <p className="text-base md:text-xl text-slate-500 max-w-xl font-light leading-relaxed">
+              <span className="text-primary font-bold tracking-[0.4em] uppercase text-[9px] md:text-[10px]">Portfolio</span>
+              <h1 className="text-3xl md:text-6xl font-serif font-black dark:text-white leading-tight tracking-tight uppercase">Iconic Spaces.</h1>
+              <p className="text-sm md:text-xl text-slate-500 dark:text-slate-400 max-w-xl font-light leading-relaxed">
                 A curated selection of our most prestigious architectural and interior projects in Rajahmundry.
               </p>
             </div>

@@ -48,7 +48,7 @@ const ContactPage = () => {
         <h2 className="text-[25vw] md:text-[20vw] font-serif font-black leading-none uppercase">Talk</h2>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-12 relative z-10">
         <motion.button
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -67,10 +67,10 @@ const ContactPage = () => {
                 <div className="w-12 h-[1px] bg-primary"></div>
                 <span className="text-primary font-bold tracking-[0.4em] uppercase text-[10px]">Concierge</span>
               </div>
-              <h1 className="text-4xl md:text-7xl font-serif font-black dark:text-white leading-[1.1] md:leading-[0.9] tracking-tighter">
+              <h1 className="text-4xl md:text-7xl font-serif font-black dark:text-white leading-[1.1] md:leading-[0.9] tracking-tighter uppercase mb-2">
                 Let's Build the <br className="hidden md:block" /> <span className="text-stroke italic text-white/90">Impossible.</span>
               </h1>
-              <p className="text-base md:text-lg text-slate-500 dark:text-slate-400 max-w-md font-light leading-relaxed">
+              <p className="text-sm md:text-lg text-slate-500 dark:text-slate-400 max-w-md font-light leading-relaxed">
                 Whether it's a structural masterpiece or a refined interior, Sandeep Associates is ready to bring your vision to life with surgical precision.
               </p>
             </div>
@@ -110,7 +110,7 @@ const ContactPage = () => {
             transition={{ duration: 1, delay: 0.3 }}
             className="lg:col-span-12 xl:col-span-7"
           >
-            <div className="bg-white dark:bg-studio-dark p-6 md:p-16 shadow-2xl rounded-sm border border-slate-100 dark:border-white/5 relative">
+            <div className="bg-white dark:bg-studio-dark p-8 md:p-16 shadow-2xl rounded-sm border border-slate-100 dark:border-white/5 relative">
               <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 -z-0 rounded-bl-full"></div>
 
               {submitted ? (

@@ -31,7 +31,12 @@ const Footer = () => {
             className="flex flex-col md:flex-row justify-between items-start md:items-end gap-12"
           >
             <div className="space-y-6">
-              <Logo size={60} />
+              <div className="md:hidden">
+                <Logo size={40} />
+              </div>
+              <div className="hidden md:block">
+                <Logo size={60} />
+              </div>
               <p className="text-slate-400 max-w-sm font-light leading-relaxed">
                 A premier architectural and interior design studio dedicated to crafting spaces that redefine modern living.
               </p>

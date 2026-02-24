@@ -23,6 +23,7 @@ const Navbar = () => {
 
   const navLinks = [
     { name: 'Home', path: '/' },
+    { name: 'Our Works', path: '/our-works' },
     { name: 'Portfolio', path: '/portfolio' },
     { name: 'Contact', path: '/contact' }
   ];
@@ -32,7 +33,12 @@ const Navbar = () => {
       <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? 'bg-surfaceLight/80 dark:bg-surfaceDark/80 backdrop-blur-xl h-20 shadow-2xl border-b border-black/5 dark:border-white/5' : 'bg-transparent h-24 md:h-28'}`}>
         <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between h-full">
           <Link to="/" className="transition-transform duration-500 hover:scale-105 active:scale-95 z-50">
-            <Logo size={window.innerWidth < 768 ? 36 : 48} />
+            <div className="md:hidden">
+              <Logo size={32} />
+            </div>
+            <div className="hidden md:block">
+              <Logo size={scrolled ? 40 : 48} />
+            </div>
           </Link>
 
           {/* Desktop Menu */}

@@ -94,15 +94,19 @@ const HomePage = () => {
     <div className="overflow-hidden bg-surfaceLight dark:bg-surfaceDark">
       {/* Hero Section with Parallax */}
       <section ref={targetRef} className="relative h-screen w-full flex items-center overflow-hidden">
-        <motion.div style={{ y }} className="absolute inset-0 z-0 h-[120%]">
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent z-10"></div>
+        <motion.div style={{ y }} className="absolute inset-0 z-0 h-[110%] md:h-[120%]">
+          {/* Enhanced Overlay for Mobile and Desktop */}
+          <div className="absolute inset-0 bg-black/40 md:bg-transparent md:bg-gradient-to-r from-black/80 via-black/40 to-transparent z-10"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10 md:hidden"></div>
+
           <video
             ref={videoRef}
             autoPlay
             muted
             loop
             playsInline
-            className="w-full h-full object-cover scale-110"
+            poster="/images/elevation design .jpeg"
+            className="w-full h-full object-cover scale-100 md:scale-110"
             src="/images/elevation design @ ubalanka video 1.mp4"
           />
         </motion.div>
@@ -112,12 +116,12 @@ const HomePage = () => {
             <div className="space-y-4">
               <CharacterAnimation
                 text="Defining the"
-                className="text-4xl md:text-6xl lg:text-7xl font-serif font-black tracking-tighter text-white leading-none uppercase"
+                className="text-3xl md:text-6xl lg:text-7xl font-serif font-black tracking-tighter text-white leading-[0.9] uppercase"
                 delay={0.2}
               />
               <CharacterAnimation
                 text="Future Cityscape."
-                className="text-3xl md:text-6xl lg:text-7xl font-serif font-bold italic tracking-tighter text-primary leading-none"
+                className="text-2xl md:text-6xl lg:text-7xl font-serif font-bold italic tracking-tighter text-primary leading-[0.9]"
                 delay={0.8}
               />
             </div>
@@ -127,7 +131,7 @@ const HomePage = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 2, duration: 1.2 }}
               style={{ opacity }}
-              className="text-base md:text-lg text-slate-300 font-light tracking-wide max-w-2xl leading-relaxed"
+              className="text-sm md:text-lg text-slate-300 font-light tracking-wide max-w-2xl leading-relaxed mx-auto md:mx-0"
             >
               At Sandeep Associates, we merge structural logic with poetic design to create spaces that breathe, inspire, and endure for generations.
             </motion.p>

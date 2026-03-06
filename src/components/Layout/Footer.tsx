@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Instagram, Phone, MapPin, ArrowUpRight, Linkedin, Twitter } from 'lucide-react';
+import { Instagram, Phone, MapPin, ArrowUpRight, Linkedin, Twitter, Heart } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import Logo from '../Brand/Logo';
 
@@ -124,13 +124,29 @@ const Footer = () => {
 
       {/* Bottom Bar */}
       <div className="py-8 border-t border-white/5 bg-studio-dark">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-[10px] uppercase tracking-[0.3em] text-slate-500 font-bold">
-            &copy; {currentYear} Sandeep Associates. All Rights Reserved.
-          </p>
-          <div className="flex gap-8">
-            <a href="#" className="text-[10px] uppercase tracking-[0.3em] text-slate-500 hover:text-white transition-colors font-bold">Privacy Policy</a>
-            <a href="#" className="text-[10px] uppercase tracking-[0.3em] text-slate-500 hover:text-white transition-colors font-bold">Terms of Service</a>
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="flex flex-col items-center gap-4">
+            {/* Made with love by StaffArc */}
+            <div className="flex items-center gap-2 text-sm text-slate-400">
+              <span>Made with</span>
+              <Heart className="w-4 h-4 text-red-500 fill-red-500" />
+              <span>by</span>
+              <a href="https://staffarc.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+                <img src="/Staffarc-logo.png" alt="StaffArc" className="h-6" />
+                <span className="text-slate-300 font-medium">StaffArc</span>
+              </a>
+            </div>
+            
+            {/* Copyright and Links */}
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4 w-full">
+              <p className="text-[10px] uppercase tracking-[0.3em] text-slate-500 font-bold">
+                &copy; {currentYear} <a href="https://www.sandeepdesignassociates.in/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Sandeep Associates</a>. All Rights Reserved.
+              </p>
+              <div className="flex gap-8">
+                <a href="#" className="text-[10px] uppercase tracking-[0.3em] text-slate-500 hover:text-white transition-colors font-bold">Privacy Policy</a>
+                <a href="#" className="text-[10px] uppercase tracking-[0.3em] text-slate-500 hover:text-white transition-colors font-bold">Terms of Service</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>

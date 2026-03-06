@@ -138,7 +138,29 @@ const OurWorksPage = () => {
         "/images/AKSHARA THEATRE2.jpeg",
         "/images/AKSHARA THEATRE3.jpeg",
         "/images/AKSHARA THEATRE4.jpeg",
-        "/images/AKSHARA THEATRE5.jpeg"
+        "/images/AKSHARA THEATRE5.jpeg",
+        "/images/AKSHARA_THEATRE main.jpeg"
+      ]
+    },
+    {
+      title: "Hiwaga Beauty Salon",
+      location: "Rajahmundry",
+      category: "Commercial",
+      year: "2024",
+      style: "Luxury Minimalist",
+      scope: "Interior Design & Execution",
+      description: "An ultra-luxury beauty destination featuring bespoke carpentry, atmospheric lighting, and high-end material finishes.",
+      image: "/images/hiwaga-hero.jpg",
+      images: [
+        "/images/hiwaga-reception.jpg",
+        "/images/hiwaga-salon-area.jpg",
+        "/images/makeup-room.jpg",
+        "/images/wash-station.jpg",
+        "/images/reception-desk.jpg",
+        "/images/salon-interior.jpg",
+        "/images/08.jpg.jpeg",
+        "/images/014.jpg.jpeg",
+        "/images/19.jpg.jpeg"
       ]
     },
     {
@@ -155,11 +177,12 @@ const OurWorksPage = () => {
         "/images/dr. gowtham reddy flat tv1.jpeg",
         "/images/dr. gowtham reddy flat tv 2.jpeg",
         "/images/dr. gowtham reddy flat1 dining.jpeg",
-        "/images/dr. gowtham reddy flat3.jpeg"
+        "/images/dr. gowtham reddy flat3.jpeg",
+        "/images/dr. gowtham reddy flat main.jpeg"
       ]
     },
     {
-      title: "Drive-in PH",
+      title: "Drive-in PJ",
       location: "Ravulapalem",
       category: "Architectural",
       year: "2024",
@@ -170,7 +193,8 @@ const OurWorksPage = () => {
       images: [
         "/images/drivein ph-ravulapem.jpeg",
         "/images/drivein ph-ravulapem 2.jpeg",
-        "/images/drivein ph-ravulapem 3.jpeg"
+        "/images/drivein ph-ravulapem 3.jpeg",
+        "/images/drivein ph-ravulapem main.jpeg"
       ]
     },
     {
@@ -183,7 +207,10 @@ const OurWorksPage = () => {
       description: "An elegant facade study that explores the interplay of shadow, texture, and light.",
       image: "/images/elevation design .jpeg",
       images: [
-        "/images/elevation design @ ubalanka 3.jpeg"
+        "/images/elevation design @ ubalanka 3.jpeg",
+        "/images/elevation design .jpeg",
+        "/images/11.jpg.jpeg",
+        "/images/19.jpg.jpeg"
       ]
     },
     {
@@ -197,7 +224,8 @@ const OurWorksPage = () => {
       image: "/images/villa @ ravulapalem.jpeg",
       images: [
         "/images/villa @ ravulapalem2.jpeg",
-        "/images/villa @ ravulapalem3.jpeg"
+        "/images/villa @ ravulapalem3.jpeg",
+        "/images/villa @ ravulapalem.jpeg"
       ]
     }
   ];
